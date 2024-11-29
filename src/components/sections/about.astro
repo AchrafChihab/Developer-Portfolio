@@ -1,0 +1,49 @@
+---
+import kilianPetersImage from '@/assets/images/kilian-peters.jpg';
+import { Caption, Paragraph, Heading } from '@/components/ui/typography';
+import { Button } from '@/components/ui/button';
+import { Image } from 'astro:assets';
+---
+
+<section
+  id="about"
+  aria-labelledby="about-heading"
+  class="relative z-10 w-full bg-neutrals-900"
+>
+  <div
+    class="flex min-h-screen w-full items-center max-lg:flex-col lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,min(91.666667%/2,40rem))_minmax(0,min(91.666667%/2,40rem))_minmax(0,1fr)] xl:grid-cols-[minmax(0,1fr)_minmax(0,min(80%/2,40rem))_minmax(0,min(80%/2,40rem))_minmax(0,1fr)]"
+  >
+    <Image
+      src={kilianPetersImage}
+      alt="Ashraf Chihab, skilled full-stack developer"
+      class="h-full max-h-screen bg-neutrals-800 object-cover object-center grayscale transition-[filter] duration-500 hover:grayscale-0 lg:col-start-1 lg:col-end-3"
+    />
+    <div class="w-full max-lg:mx-auto max-lg:w-11/12 max-lg:max-w-7xl lg:ps-10 xl:ps-20">
+      <Caption id="about-heading">About Me</Caption>
+      <Heading>Turning Ideas into Digital Reality</Heading>
+      <Paragraph>
+        I’m <span class="text-neutrals-100">Ashraf Chihab</span>, a passionate full-stack developer
+        with
+        <span class="text-neutrals-100">5+ years of experience</span> crafting tailored solutions for
+        web and mobile platforms. From building scalable applications with <span
+          class="text-neutrals-100">MERN stack</span
+        > and <span class="text-neutrals-100">PHP</span>, to integrating seamless APIs and creating
+        interactive user experiences, I thrive on transforming challenges into
+        <span class="text-neutrals-100">functional, engaging digital products</span>. Let’s
+        collaborate to build something extraordinary together.
+      </Paragraph>
+
+      <div class="mt-10">
+        <Button
+          as="a"
+          href="/#contact"
+          size="small"
+          isGhost
+          className="rounded-full"
+        >
+          Hit us up
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>

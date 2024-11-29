@@ -1,0 +1,27 @@
+---
+import { ServicesGrid } from '@/components/services-grid';
+import { Container } from '@/components/ui/container';
+import Section from '@/components/ui/section.astro';
+import { Caption, Heading, Paragraph } from '@/components/ui/typography';
+---
+
+<Section
+  id="services"
+  aria-labelledby="services-heading"
+  hasBorderTop
+  hasGlowEffect
+>
+  <Container>
+    <div class="mb-16 flex flex-col items-center text-center">
+      <Caption id="services-heading">Our Services</Caption>
+      <Heading>
+        Turning visions into reality, <br class="lg:hidden" />one website at a time
+      </Heading>
+    </div>
+    <Paragraph>
+      Buckle up and prepare for an extraordinary journey. Together, we'll transform your web vision
+      into a groundbreaking digital experience that takes you beyond the ordinary.
+    </Paragraph>
+  </Container>
+  <ServicesGrid client:visible />
+</Section>

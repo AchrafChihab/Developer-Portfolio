@@ -1,0 +1,82 @@
+---
+import { StarsBackground } from '@/components/stars-background';
+import TestimonialCard from '@/components/testimonial-card.astro';
+import { Container } from '@/components/ui/container';
+import Section from '@/components/ui/section.astro';
+import { Caption, Heading, Paragraph } from '@/components/ui/typography';
+import { getTestimonials } from '@/lib/strapi/get-testimonials';
+
+// interface Testimonial {
+//   id: number; // Exemple d'un identifiant
+//   content: string;
+//   author: string;
+// }
+
+const testimonials: any = await getTestimonials();
+try {
+  console.log('Fetched testimonials:', testimonials);
+} catch (error) {
+  console.error('Error fetching testimonials:', error);
+}
+const reversedTestimonials = testimonials;
+---
+
+<Section
+  id="stories"
+  aria-labelledby="stories-heading"
+  hasBorderTop
+  hasGlowEffect
+>
+  <StarsBackground client:visible />
+  <Container>
+    <div class="mb-16 flex flex-col items-center text-center">
+      <Caption id="stories-heading">Customer Stories</Caption>
+      <Heading> Trusted by the kindest clients </Heading>
+      <Paragraph>
+        Here's a glimpse into the heartfelt experiences of our incredible clients.<br />Your trust
+        fuels our passion.
+      </Paragraph>
+    </div>
+  </Container>
+  <div class="mask-inline-faded group mb-6 flex w-full overflow-x-hidden">
+    <ul class="group-hover:play-state-paused motion-reduce:play-state-paused flex animate-marquee">
+      {
+        testimonials.testimonials?.map((testimonial: any) => (
+          <TestimonialCard testimonial={testimonial} />
+        ))
+      }
+    </ul>
+    <ul
+      aria-hidden="true"
+      class="group-hover:play-state-paused motion-reduce:play-state-paused flex animate-marquee"
+    >
+      {
+        testimonials.testimonials?.map((testimonial: any) => (
+          <TestimonialCard testimonial={testimonial} />
+        ))
+      }
+    </ul>
+  </div>
+  <div class="mask-inline-faded group flex w-full overflow-x-hidden">
+    <ul
+      aria-hidden="true"
+      class="group-hover:play-state-paused motion-reduce:play-state-paused flex animate-marquee [animation-direction:reverse]"
+    >
+      {
+        reversedTestimonials.testimonials?.map((testimonial: any) => (
+          <TestimonialCard testimonial={testimonial} />
+        ))
+      }
+    </ul>
+    <ul
+      aria-hidden="true"
+      class="group-hover:play-state-paused motion-reduce:play-state-paused flex animate-marquee [animation-direction:reverse]"
+    >
+      {
+        reversedTestimonials.testimonials?.map((testimonial: any) => (
+          <TestimonialCard testimonial={testimonial} />
+        ))
+      }
+    </ul>
+  </div>
+</Section>

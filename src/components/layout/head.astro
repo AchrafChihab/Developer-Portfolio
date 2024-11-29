@@ -1,0 +1,99 @@
+---
+import { siteConfig } from '@/config/site';
+import '@/styles/globals.css';
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/700.css';
+import { SEO } from 'astro-seo';
+import { ViewTransitions } from 'astro:transitions';
+import { Head as InternalHead } from 'astro-capo';
+import { env } from '@/t3-env';
+
+type Props = {
+  title?: string | undefined;
+  description?: string | undefined;
+  openGraphImage?: { src: string; alt: string } | undefined;
+};
+
+const { title, description, openGraphImage } = Astro.props;
+
+const { pathname } = Astro.url;
+
+const { PUBLIC_GOOGLE_SITE_VERIFICATION, PUBLIC_GOOGLE_ANALYTICS_ID, DEV: isDevMode } = env;
+
+const {
+  name: siteName,
+  slogan: siteSlogan,
+  description: siteDescription,
+  url: siteUrl,
+} = siteConfig;
+
+const cannonical = `${siteUrl}${pathname}`;
+---
+
+<InternalHead>
+  <SEO
+    charset="UTF-8"
+    title={title!}
+    titleTemplate={`%s | ${siteName}`}
+    titleDefault={`${siteName} | ${siteSlogan}`}
+    description={description ?? siteDescription}
+    canonical={cannonical}
+    openGraph={{
+      basic: {
+        title: title ?? siteSlogan,
+        type: 'website',
+        url: cannonical,
+        image: openGraphImage?.src ?? '/banner-1200x630.png',
+      },
+      optional: {
+        description: description ?? siteDescription,
+        siteName,
+      },
+      image: {
+        alt: openGraphImage?.alt ?? siteName,
+        width: 1200,
+        height: 630,
+      },
+    }}
+    twitter={{
+      card: 'summary_large_image',
+    }}
+    extend={{
+      link: [
+        // Makes sure a favicon is also shown in dev mode, before its generation. Ensures there is no duplicate link in the production build
+        ...(isDevMode ? [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }] : []),
+        { rel: 'sitemap', href: '/sitemap-index.xml' },
+      ],
+      meta: [
+        { name: 'viewport', content: 'width=device-width' },
+        { name: 'robots', content: 'index' },
+        { name: 'generator', content: Astro.generator },
+        {
+          name: 'google-site-verification',
+          content: PUBLIC_GOOGLE_SITE_VERIFICATION,
+        },
+      ],
+    }}
+  />
+  <ViewTransitions />
+  <script
+    type="text/partytown"
+    is:inline
+    async
+    src={`https://www.googletagmanager.com/gtag/js?id=${PUBLIC_GOOGLE_ANALYTICS_ID}`}
+  ></script>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    rel="stylesheet"
+  />
+  <script type="text/partytown" is:inline define:vars={{ PUBLIC_GOOGLE_ANALYTICS_ID }}>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', PUBLIC_GOOGLE_ANALYTICS_ID);
+  </script>
+</InternalHead>

@@ -1,0 +1,42 @@
+---
+import { ScrollProgress } from '@/components/scroll-progress';
+import ProjectDetailsSection from '@/components/sections/project-details.astro';
+import ProjectRecommendationsSection from '@/components/sections/project-recommendations.astro';
+import Layout from '@/layouts/layout.astro';
+import { getProjects } from '@/lib/strapi/get-projects';
+import { imageUrlFor } from '@/lib/strapi/sanity-image';
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+
+  return projects.data.map((project: any) => ({
+    params: { slug: project.slug.current },
+    props: { project },
+  }));
+}
+
+type Props = {
+  project: any;
+};
+
+const { project } = Astro.props;
+
+const openGraphImage = {
+  src: project.poster?.asset?._ref
+    ? imageUrlFor(project.poster).width(1200).height(630).fit('crop').url()
+    : '/fallback-image.jpg', // Provide a fallback image URL if no valid poster
+  alt: project.poster?.alt || 'Fallback Image', // Default alt text if missing
+};
+---
+
+<Layout
+  title={`${project.name} ― Projects`}
+  description={project.description}
+  openGraphImage={openGraphImage}
+>
+  <ScrollProgress client:idle />
+  <main id="main">
+    <ProjectDetailsSection project={project} />
+    <ProjectRecommendationsSection project={project} />
+  </main>
+</Layout>

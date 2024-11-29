@@ -1,0 +1,33 @@
+---
+import { ProjectCarousel } from '@/components/project-carousel';
+import { Container } from '@/components/ui/container';
+import Section from '@/components/ui/section.astro';
+import { Caption, Heading, Paragraph } from '@/components/ui/typography';
+import { getProjects } from '@/lib/strapi/get-projects';
+
+const projects = await getProjects();
+---
+
+<Section
+  id="work"
+  aria-labelledby="work-heading"
+  hasBorderTop
+  hasGlowEffect
+  class="lg:border-t-0.5 lg:border-neutrals-600 lg:before:hidden lg:after:hidden"
+>
+  <Container>
+    <div class="flex flex-col items-center text-center">
+      <Caption id="work-heading">Work</Caption>
+      <Heading>Dig into our universe</Heading>
+      <Paragraph>
+        Explore our portfolio of projects that showcase creativity, innovation, and technical
+        excellence. Each project is a testament to our commitment to delivering outstanding
+        solutions.
+      </Paragraph>
+    </div>
+  </Container>
+  <ProjectCarousel
+    client:idle
+    projects={projects?.data}
+  />
+</Section>

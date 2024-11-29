@@ -1,0 +1,32 @@
+---
+type Props = {
+  testimonial: {
+    quote: string;
+    name: string;
+    title: string;
+  };
+};
+
+const { testimonial } = Astro.props;
+---
+
+<li
+  class="relative me-6 h-full w-[32rem] max-w-[80vw] flex-[0_0_auto] rounded-lg border border-neutrals-200/20 bg-radial-highlight p-6"
+>
+  <article class="flex h-full flex-col justify-between gap-y-4">
+    <!-- Testimonial Quote -->
+    <blockquote class="max-w-prose text-sm/relaxed text-neutrals-200">
+      &quot;{testimonial.quote}&quot;
+    </blockquote>
+
+    <!-- Testimonial Author Info -->
+    <div class="mt-6">
+      <cite>
+        <h3 class="mb-0.5 text-lg font-semibold not-italic leading-tight max-lg:text-base">
+          {testimonial.name}
+        </h3>
+      </cite>
+      <p class="text-xs text-neutrals-200 lg:text-sm">{testimonial.title}</p>
+    </div>
+  </article>
+</li>

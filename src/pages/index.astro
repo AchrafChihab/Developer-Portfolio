@@ -1,0 +1,26 @@
+---
+import AboutSection from '@/components/sections/about.astro';
+import ContactSection from '@/components/sections/contact.astro';
+import EducationTimeline from '@/components/sections/education-timeline.astro';
+import Frameworks from '@/components/sections/Frameworks.astro';
+// import HeroSection from '@/components/sections/hero.astro';
+import ServicesSection from '@/components/sections/services.astro';
+import SourceCodeSection from '@/components/sections/source-code.astro';
+import TestimonialsSection from '@/components/sections/testimonials.astro';
+import WorkSection from '@/components/sections/work.astro';
+import Layout from '@/layouts/layout.astro';
+---
+
+<Layout>
+  <main id="main">
+    <SourceCodeSection />
+    <!-- <HeroSection /> -->
+    <AboutSection />
+    <Frameworks />
+    <EducationTimeline />
+    <WorkSection />
+    <TestimonialsSection />
+    <ServicesSection />
+    <ContactSection />
+  </main>
+</Layout>

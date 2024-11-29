@@ -1,0 +1,123 @@
+---
+import { MatrixBackground } from '@/components/matrix-background';
+import { Button } from '@/components/ui/button';
+import { Container } from '@/components/ui/container';
+import Section from '@/components/ui/section.astro';
+import { Caption, Paragraph } from '@/components/ui/typography';
+// import { siteConfig } from '@/config/site';
+import { TypingHeading } from '@/components/typing-heading';
+
+const headings = [
+  'Full Stack Developers',
+  'WordPress Wizards',
+  'Creative Problem Solvers',
+  'User Experience Designers',
+  'E-commerce Specialists',
+  'Digital Strategists',
+  'Data-Driven Innovators',
+  'Agile Collaborators',
+  'Responsive Web Designers',
+  'API Integration Experts',
+  'Quality Assurance Champions',
+];
+---
+
+<Section
+  id="source-code"
+  aria-labelledby="sourcecode-heading"
+  hasBorderTop
+>
+  <MatrixBackground client:visible />
+  <Container>
+    <div class="grid lg:flex lg:justify-between">
+      <div class="w-full lg:w-1/2">
+        <Caption id="sourcecode-heading">This is me </Caption>
+        <!-- <Heading>hi Behind the simulation</Heading> -->
+        <TypingHeading
+          client:visible
+          headings={headings}
+        />
+        <Paragraph>
+          Elevate your digital presence with <span class="text-neutrals-100"
+            >5 years of expert web development</span
+          >. From <span class="text-neutrals-100">MERN stack</span> to <span
+            class="text-neutrals-100">mobile apps</span
+          >, I craft <span class="text-neutrals-100">high-quality solutions</span> that prioritize <span
+            class="text-neutrals-100">user experience</span
+          >. With expertise in <span class="text-neutrals-100">PHP, APIs, and Spring Boot</span>, I
+          bring versatility to every project. Choose excellence, choose <span
+            class="text-neutrals-100">dedicated support</span
+          >, and watch your vision transform into digital reality.
+        </Paragraph>
+        <div class="mt-12 flex items-stretch gap-x-6 gap-y-3 max-sm:flex-col sm:items-center">
+          <Button
+            as="a"
+            href="/#work"
+            background="primary"
+            size="large"
+          >
+            Dig into our universe
+          </Button>
+          <Button
+            as="a"
+            href="/#services"
+            background="primary"
+            size="large"
+            isGhost
+          >
+            See services
+          </Button>
+        </div>
+      </div>
+      <div class="orbit-circule relative w-full sm:hidden lg:w-1/2">
+        <div class="orbit">
+          <ul class="orbit-wrap">
+            <li class="orbit-center">
+              <i class="orbit-center__icon fa fa-code"></i>
+            </li>
+
+            <li>
+              <ul class="ring-0">
+                <li><i class="fa-brands fa-github"></i></li>
+                <li><i class="fa-brands fa-free-code-camp"></i></li>
+                <li><i class="fa-brands fa-atlassian"></i></li>
+                <li><i class="fa-solid fa-book"></i></li>
+                <li><i class="fa-solid fa-flask"></i></li>
+              </ul>
+            </li>
+
+            <li>
+              <ul class="ring-1">
+                <li><i class="fa-brands fa-php"></i></li>
+                <li><i class="fa-brands fa-laravel"></i></li>
+                <li><i class="fa-brands fa-symfony"></i></li>
+                <li><i class="fa-brands fa-node-js"></i></li>
+                <li><i class="fa-solid fa-cloud"></i></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="ring-2">
+                <li><i class="fa-brands fa-docker"></i></li>
+                <li><i class="fa-brands fa-react"></i></li>
+                <li><i class="fa-brands fa-angular"></i></li>
+                <li><i class="fa-solid fa-star"></i></li>
+                <li><i class="fa-brands fa-html5"></i></li>
+                <li><i class="fa-brands fa-css3-alt"></i></li>
+                <li><i class="fa-brands fa-js"></i></li>
+                <li><i class="fa-brands fa-angular"></i></li>
+              </ul>
+            </li>
+            <li>
+              <ul class="ring-3">
+                <li><i class="fa-solid fa-database"></i></li>
+                <li><i class="fa-solid fa-leaf"></i></li>
+                <li><i class="fa-solid fa-fire"></i></li>
+                <li><i class="fa-brands fa-php"></i></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </Container>
+</Section>
