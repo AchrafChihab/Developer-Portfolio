@@ -1,5 +1,5 @@
 ---
-import EducationTimeline from '../ui/EducationTimeline';
+import ListEducationTimeline from '@/components/ui/ListEducationTimeline';
 import { Container } from '@/components/ui/container';
 import Section from '@/components/ui/section.astro';
 import { Caption, Heading, Paragraph } from '@/components/ui/typography';
@@ -26,7 +26,7 @@ import { Caption, Heading, Paragraph } from '@/components/ui/typography';
 
     <div class="flex flex-col justify-between md:flex-row">
       <div class="diver-center w-full p-4 md:w-1/2">
-        <EducationTimeline
+        <ListEducationTimeline
           title="Education Timeline"
           client:visible
           currentStep="Master's Degree in Computer Science"
@@ -35,7 +35,7 @@ import { Caption, Heading, Paragraph } from '@/components/ui/typography';
       </div>
 
       <div class="w-full p-4 md:w-1/2">
-        <EducationTimeline
+        <ListEducationTimeline
           title="Professional Career Timeline"
           client:visible
           currentStep="Full-Stack Developer at TechCorp"

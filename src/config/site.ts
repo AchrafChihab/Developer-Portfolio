@@ -10,7 +10,7 @@ const siteConfig = {
   links: {
     // sourcecode: 'https://sourcecode.lokkeestudios.com',
     github: 'https://github.com/AchrafChihab',
-    // instagram: 'https://instagram.lokkeestudios.com',
+    instagram: 'https://instagram.achrafchihab.com',
     linkedin: 'https://www.linkedin.com/in/achraf-chihab/',
   },
 } as const;

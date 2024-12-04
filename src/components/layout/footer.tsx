@@ -1,9 +1,9 @@
-import lokkeestudiosLogoImage from '@/assets/images/logos/lokkeestudios.svg';
+import lokkeestudiosLogoImage from '@/assets/images/logos/achraf_chihab.svg';
 import { Container } from '@/components/ui/container';
 import { Icons } from '@/components/ui/icons';
 import { Image } from '@/components/ui/image';
 import { useState } from 'react';
-import { siteConfig } from 'src/config/site';
+import { siteConfig } from '@/config/site';
 
 const primaryLinks = [
   {
@@ -139,7 +139,7 @@ function Footer() {
             ))}
           </ul>
           <div className="flex justify-center lg:order-first lg:justify-start">
-            <small className="text-xs text-neutrals-300">&copy; {currentYear} LOKKEE STUDIOS</small>
+            <small className="text-xs text-neutrals-300">&copy; {currentYear} CHIHAB ASHRAF</small>
           </div>
         </div>
       </Container>

@@ -1,11 +1,10 @@
 ---
-import { type Project } from '@/lib/strapi/get-projects';
 import { generateImageSizeProps } from '@/lib/strapi/sanity-image';
 import { formatDate } from '@/lib/utils';
 import { Image } from 'astro:assets';
 
 type Props = {
-  project: Project;
+  project: any;
 };
 
 const { project } = Astro.props;

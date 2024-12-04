@@ -38,11 +38,11 @@ const blogPosts = await getBlogPosts();
         </div>
         <div class="flex flex-col gap-y-12">
           {
-            blogPosts.map((blogPost, i) => (
+            blogPosts?.map((blogPost: any, i) => (
               <article class="relative">
                 <a
-                  href={`/blog/${blogPost.slug.current}`}
-                  aria-label={`Show ${blogPost.title} blog post`}
+                  href={`/blog/${blogPost?.slug.current}`}
+                  aria-label={`Show ${blogPost?.title} blog post`}
                   class="group flex items-center"
                 >
                   <div

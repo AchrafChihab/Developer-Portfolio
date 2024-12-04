@@ -1,4 +1,3 @@
-import lokkeestudiosWordmarkLogoImage from '@/assets/images/logos/lokkeestudios-wordmark.svg';
 import {
   MobileNavigation,
   MobileNavigationOverlay,
@@ -6,7 +5,6 @@ import {
 } from '@/components/layout/mobile-navigation';
 import { Button } from '@/components/ui/button';
 import { Container } from '@/components/ui/container';
-import { Image } from '@/components/ui/image';
 import { useScrollThreshold } from '@/hooks/use-scroll-threshold';
 import { cn } from '@/lib/utils';
 import { useState } from 'react';
@@ -62,7 +60,7 @@ function Header() {
             </div>
             <nav
               aria-label="Primary"
-              className="items-center hidden ms-4 gap-x-6 lg:flex"
+              className="ms-4 hidden items-center gap-x-6 lg:flex"
             >
               {links.map((link) => (
                 <a
@@ -82,7 +80,7 @@ function Header() {
                 data-astro-prefetch
                 className="text-2xl hover:animate-jiggle"
               >
-                <strong > Chihab  </strong>Achraf 
+                <strong> Chihab </strong>Ashraf
               </a>
             </div>
             <div className="flex items-center justify-end">

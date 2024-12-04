@@ -1,12 +1,5 @@
-import CardSpotlight from './ui/CardSpotlight'; // Ensure this import is correct
-import {
-  ServiceCard,
-  ServiceCardTitle,
-  ServiceCardPrice,
-  ServiceCardDescription,
-} from './service-card'; // Import a logo component if you have one
+import { ServiceCard, ServiceCardPrice } from './service-card'; // Import a logo component if you have one
 import { useMotionValue } from 'framer-motion';
-import Heading from './blog/heading.astro';
 
 // Data for frontend frameworks
 const frameworks = [
@@ -167,10 +160,10 @@ const frameworks = [
 ];
 
 const FrameworkGrid = () => {
-  const mousePositionX = useMotionValue(0);
-  const mousePositionY = useMotionValue(0);
+  const mousePositionX: any = useMotionValue(0);
+  const mousePositionY: any = useMotionValue(0);
 
-  function handleMouseMove({ clientX, clientY }) {
+  function handleMouseMove({ clientX, clientY }: { clientX: number; clientY: number }) {
     mousePositionX.set(clientX);
     mousePositionY.set(clientY);
   }

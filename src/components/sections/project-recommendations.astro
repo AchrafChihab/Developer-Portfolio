@@ -4,21 +4,34 @@ import { Container } from '@/components/ui/container';
 import { Icons } from '@/components/ui/icons';
 import Section from '@/components/ui/section.astro';
 import { Caption, Heading } from '@/components/ui/typography';
-import { type Project, getProjects } from '@/lib/strapi/get-projects';
+import { getProjects } from '@/lib/strapi/get-projects';
 import { shuffleArray } from '@/lib/utils';
 
+export async function getStaticProps() {
+  const projects = await getProjects();
+
+  const otherSimilarProjects = shuffleArray(projects)
+    .filter((currentProject: any) => currentProject._id !== Astro.props.project._id) // Filter out current project
+    .filter(
+      (currentProject: any) =>
+        currentProject.tags?.some((tag: any) => Astro.props.project.tags?.includes(tag)), // Filter similar tags
+    )
+    .slice(0, 2); // Limit to 2 projects
+
+  return {
+    props: {
+      otherSimilarProjects,
+    },
+  };
+}
+
 type Props = {
-  project: Project;
+  otherSimilarProjects: any[];
+  project: any;
 };
 
+const { otherSimilarProjects } = Astro.props;
 const { project } = Astro.props;
-
-const projects = await getProjects();
-
-const otherSimilarProjects = shuffleArray(projects)
-  .filter((currentProject) => currentProject._id !== project._id)
-  .filter((currentProject) => currentProject.tags?.some((tag) => project.tags?.includes(tag)))
-  .slice(0, 2);
 ---
 
 <Section
@@ -32,7 +45,7 @@ const otherSimilarProjects = shuffleArray(projects)
       <Heading>Discover new worlds</Heading>
       <div class="mt-4 flex gap-4 max-md:flex-col">
         {
-          otherSimilarProjects.map((otherSimilarProject) => (
+          otherSimilarProjects?.map((otherSimilarProject) => (
             <ProjectCard project={otherSimilarProject} />
           ))
         }

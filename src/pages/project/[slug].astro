@@ -2,14 +2,21 @@
 import { ScrollProgress } from '@/components/scroll-progress';
 import ProjectDetailsSection from '@/components/sections/project-details.astro';
 import ProjectRecommendationsSection from '@/components/sections/project-recommendations.astro';
-import Layout from '@/layouts/layout.astro';
+import Layout from 'src/layouts/layout.astro';
 import { getProjects } from '@/lib/strapi/get-projects';
 import { imageUrlFor } from '@/lib/strapi/sanity-image';
 
-export async function getStaticPaths() {
-  const projects = await getProjects();
+// export const prerender = true;
 
-  return projects.data.map((project: any) => ({
+export async function getStaticPaths() {
+  // Fetch the projects data
+  const projects = await getProjects();
+  console.log(projects); // Log the structure of 'projects' to debug
+
+  // Ensure projects.data is an array and map over it
+  const projectsData = Array.isArray(projects.data) ? projects.data : [];
+
+  return projectsData.map((project: any) => ({
     params: { slug: project.slug.current },
     props: { project },
   }));
@@ -21,11 +28,12 @@ type Props = {
 
 const { project } = Astro.props;
 
+// Open Graph Image logic
 const openGraphImage = {
   src: project.poster?.asset?._ref
     ? imageUrlFor(project.poster).width(1200).height(630).fit('crop').url()
-    : '/fallback-image.jpg', // Provide a fallback image URL if no valid poster
-  alt: project.poster?.alt || 'Fallback Image', // Default alt text if missing
+    : '/fallback-image.jpg', // Fallback image URL
+  alt: project.poster?.alt || 'Fallback Image', // Default alt text
 };
 ---
 

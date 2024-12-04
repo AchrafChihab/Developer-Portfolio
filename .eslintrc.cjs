@@ -5,7 +5,7 @@ const config = {
     es2022: true,
     browser: true,
   },
-  plugins: ['prettier'],
+  plugins: ['prettier', 'import'],
   extends: [
     'eslint:recommended',
     'plugin:astro/recommended',
@@ -85,8 +85,6 @@ const config = {
       },
     },
     {
-      // Defines the configuration for `<script>` tags
-      // Inlined scripts in astro files' `<script>` tags are assigned a virtual file name with the `.js` extension.
       files: ['**/*.astro/*.js', '*.astro/*.js'],
       parser: '@typescript-eslint/parser',
     },
@@ -97,6 +95,8 @@ const config = {
     'consistent-return': ['error', { treatUndefinedAsUnspecified: false }],
     'no-underscore-dangle': 'off',
     'prettier/prettier': 'error',
+    'no-unused-vars': ['error', { argsIgnorePattern: '^_' }], // Catches unused variables
+    'import/no-unused-modules': ['error', { unusedExports: true }], // Catches unused exports (and indirectly unused files)
   },
 };
 

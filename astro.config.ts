@@ -2,31 +2,25 @@ import partytown from '@astrojs/partytown';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel';
 import robotsTxt from 'astro-robots-txt';
 import webmanifest from 'astro-webmanifest';
-import { defineConfig } from 'astro/config';
 import serviceWorker from 'astrojs-service-worker';
-// import { loadEnv } from 'vite';
 import { siteConfig } from './src/config/site';
-
-// const { PUBLIC_SANITY_PROJECT_ID, PUBLIC_SANITY_DATASET } = loadEnv(
-//   import.meta.env.MODE,
-//   process.cwd(),
-//   '',
-// );
-
-// if (!PUBLIC_SANITY_PROJECT_ID || !PUBLIC_SANITY_DATASET)
-//   throw new Error(
-//     'Both environment variables PUBLIC_SANITY_PROJECT_ID and PUBLIC_SANITY_DATASET must be set in order for the site to properly function',
-//   );
+import { defineConfig } from 'vite';
 
 const { name, backgroundColor, themeColor, url } = siteConfig;
 
-// https://astro.build/config
-const config = defineConfig({
+export default defineConfig({
+  vite: {
+    resolve: {
+      alias: {
+        '@/': new URL('./src/', import.meta.url).pathname,
+      },
+    },
+  },
   site: url,
-  output: 'hybrid',
+  output: 'server',
   adapter: vercel({
     webAnalytics: {
       enabled: true,
@@ -36,19 +30,11 @@ const config = defineConfig({
     },
   }),
   prefetch: true,
-  experimental: {
-    clientPrerender: true,
-  },
+  // Supprimé "experimental" car il ne semble pas nécessaire
   integrations: [
     tailwind({
       applyBaseStyles: false,
     }),
-    // sanity({
-    //   projectId: PUBLIC_SANITY_PROJECT_ID,
-    //   dataset: PUBLIC_SANITY_DATASET,
-    //   useCdn: false,
-    //   studioBasePath: '/admin',
-    // }),
     react(),
     partytown({
       config: {
@@ -75,5 +61,3 @@ const config = defineConfig({
     }),
   ],
 });
-
-export default config;

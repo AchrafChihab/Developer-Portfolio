@@ -2,7 +2,6 @@
 import PortableText from '@/components/blog/portable-text.astro';
 import { Container } from '@/components/ui/container';
 import { Icons } from '@/components/ui/icons';
-import { SanityImage } from '@/components/ui/sanity-image';
 import { Paragraph } from '@/components/ui/typography';
 import { type BlogPost } from '@/lib/strapi/get-blog-posts';
 import { formatDateWithDay } from '@/lib/utils';
@@ -48,12 +47,12 @@ const { blogPost } = Astro.props;
     <div
       class="mb-16 w-screen overflow-hidden border-y-0.5 border-neutrals-50/40 max-md:relative max-md:start-1/2 max-md:-translate-x-1/2 md:w-full md:rounded-md md:border-0.5"
     >
-      <SanityImage
+      <!-- <SanityImage
         image={blogPost.poster}
         isAboveTheFold
         maxWidth={1280}
         className="w-full"
-      />
+      /> -->
     </div>
     <PortableText
       content={blogPost.content}

@@ -349,6 +349,9 @@ ul[class^='ring'] li {
   transform: rotate(380deg) translate(5em) rotate(-380deg);
 }
 @media (max-width: 768px) {
+  .orbit-circule {
+    display: none;
+  }
   .ring-3 {
     width: 5em;
     height: 5em;
@@ -393,7 +396,7 @@ ul[class^='ring'] li {
   height: 1.8em;
   line-height: 1.8em;
   text-align: center;
-  background: hotpink;
+  background: rgba(113, 24, 226, 1);
   border-radius: 50%;
 }
 .orbit-center:hover .orbit-center__icon {

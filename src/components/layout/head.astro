@@ -7,7 +7,8 @@ import '@fontsource/inter/700.css';
 import { SEO } from 'astro-seo';
 import { ViewTransitions } from 'astro:transitions';
 import { Head as InternalHead } from 'astro-capo';
-import { env } from '@/t3-env';
+import lokkeestudiosLogoImage from '@/assets/images/logos/achraf_chihab.svg';
+import { env } from 'src/t3-env';
 
 type Props = {
   title?: string | undefined;
@@ -29,6 +30,8 @@ const {
 } = siteConfig;
 
 const cannonical = `${siteUrl}${pathname}`;
+const faviconPath =
+  typeof lokkeestudiosLogoImage === 'string' ? lokkeestudiosLogoImage : lokkeestudiosLogoImage.src;
 ---
 
 <InternalHead>
@@ -62,7 +65,9 @@ const cannonical = `${siteUrl}${pathname}`;
     extend={{
       link: [
         // Makes sure a favicon is also shown in dev mode, before its generation. Ensures there is no duplicate link in the production build
-        ...(isDevMode ? [{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }] : []),
+        ...(isDevMode
+          ? [{ rel: 'icon', href: faviconPath, type: 'image/svg+xml' }]
+          : [{ rel: 'icon', href: faviconPath, type: 'image/svg+xml' }]),
         { rel: 'sitemap', href: '/sitemap-index.xml' },
       ],
       meta: [

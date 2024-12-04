@@ -1,11 +1,9 @@
 import {
   ServiceCard,
-  ServiceCardAddonListItem,
   ServiceCardBenefitListItem,
   ServiceCardCallToAction,
   ServiceCardDescription,
   ServiceCardList,
-  ServiceCardNotice,
   ServiceCardPrice,
   ServiceCardTitle,
 } from '@/components/service-card';

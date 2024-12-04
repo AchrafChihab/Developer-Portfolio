@@ -82,7 +82,7 @@ function ContactSubmissionConfirmationEmail({
             <Section>
               <Img
                 src="https://lokkeestudios.com/icons/icon-512x512.png"
-                alt="LOKKEE STUDIOS"
+                alt="Achraf chihab Casablanca"
                 width={64}
                 height={64}
                 className="mx-auto"
@@ -124,10 +124,10 @@ function ContactSubmissionConfirmationEmail({
                 You are receiving this email because you have recently submitted an inquiry via the
                 contact form on{' '}
                 <a
-                  href="https://lokkeestudios.com"
+                  href="https://ashrafchihab.com"
                   className="text-neutrals-100 no-underline"
                 >
-                  lokkeestudios.com
+                  ashrafchihab.com
                 </a>
                 . This is an automatic notification, please do not reply to this email!
               </Text>

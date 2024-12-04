@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    "noImplicitAny": false,
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "module": "ESNext",
+    "module": "node16",
     "lib": ["ESNext", "DOM"],
     "types": ["vite/client"],
-    "moduleResolution": "Node",
+    "moduleResolution": "node16",
     "strict": true,
     "sourceMap": true,
     "resolveJsonModule": true,
@@ -16,8 +17,7 @@
     "noImplicitReturns": true,
     "baseUrl": ".", // Add this line
     "paths": {
-      "@/*": ["src/*"], // Add this block,
-      "@/components/*": ["src/components/*"]
+      "@/*": ["src/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"

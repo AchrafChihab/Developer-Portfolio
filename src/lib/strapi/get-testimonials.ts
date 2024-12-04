@@ -1,5 +1,4 @@
 // import { type Image } from '@/lib/strapi/sanity-image';
-import groq from 'groq';
 
 type Testimonial = {
   _id: string;

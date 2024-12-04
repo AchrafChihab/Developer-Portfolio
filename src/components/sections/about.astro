@@ -20,28 +20,42 @@ import { Image } from 'astro:assets';
     />
     <div class="w-full max-lg:mx-auto max-lg:w-11/12 max-lg:max-w-7xl lg:ps-10 xl:ps-20">
       <Caption id="about-heading">About Me</Caption>
-      <Heading>Turning Ideas into Digital Reality</Heading>
+      <Heading>Shaping the Future Through Code</Heading>
       <Paragraph>
-        I’m <span class="text-neutrals-100">Ashraf Chihab</span>, a passionate full-stack developer
-        with
-        <span class="text-neutrals-100">5+ years of experience</span> crafting tailored solutions for
-        web and mobile platforms. From building scalable applications with <span
-          class="text-neutrals-100">MERN stack</span
-        > and <span class="text-neutrals-100">PHP</span>, to integrating seamless APIs and creating
-        interactive user experiences, I thrive on transforming challenges into
-        <span class="text-neutrals-100">functional, engaging digital products</span>. Let’s
-        collaborate to build something extraordinary together.
+        Hi, I’m <span class="text-neutrals-100">Ashraf Chihab</span>, a highly motivated and
+        experienced full-stack developer with <span class="text-neutrals-100"
+          >5+ years of experience</span
+        >. I specialize in creating robust web and mobile applications that blend seamless
+        functionality with exceptional user experience. My expertise spans across modern frameworks
+        like <span class="text-neutrals-100">MERN</span>,
+        <span class="text-neutrals-100">PHP</span>, and API integrations, enabling me to turn ideas
+        into innovative and scalable digital solutions.
+      </Paragraph>
+      <Paragraph>
+        I’m driven by a passion for solving complex problems and delivering projects that exceed
+        expectations. Let’s collaborate to transform your vision into reality and create something
+        impactful together!
       </Paragraph>
 
-      <div class="mt-10">
+      <div class="mt-10 flex gap-5">
         <Button
           as="a"
-          href="/#contact"
+          href="/path-to-cv-fr.pdf"
           size="small"
           isGhost
           className="rounded-full"
         >
-          Hit us up
+          📄 Download CV (FR)
+        </Button>
+        <Button
+          as="a"
+          href="/path-to-cv-en.pdf"
+          size="small"
+          isGhost
+          download
+          className="rounded-full"
+        >
+          📄 Download CV (EN)
         </Button>
       </div>
     </div>

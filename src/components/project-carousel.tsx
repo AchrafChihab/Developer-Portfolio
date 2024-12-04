@@ -1,8 +1,7 @@
-import { Container } from '@/components/ui/container';
-import { Icons } from '@/components/ui/icons';
-import { type Project } from '@/lib/strapi/get-projects';
-import { generateImageSizeProps } from '@/lib/strapi/sanity-image';
-import { clamp, cn, formatDate } from '@/lib/utils';
+import { Container } from 'src/components/ui/container';
+import { Icons } from 'src/components/ui/icons';
+import { generateImageSizeProps } from 'src/lib/strapi/sanity-image';
+import { clamp, cn, formatDate } from 'src/lib/utils';
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/react';
 import { cx } from 'class-variance-authority';
 import {
@@ -46,8 +45,6 @@ function ProjectSlide({
   const slideRef = useRef<ElementRef<'li'>>(null);
   const [slideOffsetLeft, setSlideOffsetLeft] = useState(0);
   const [slideWidth, setSlideWidth] = useState(0);
-  const [projects, setProjects] = useState([]);
-  const [filteredProjects, setFilteredProjects] = useState([]);
   const imagePosition = useTransform(
     scrollPosition,
     [slideOffsetLeft + slideWidth, slideOffsetLeft - carouselWidth],
@@ -221,7 +218,7 @@ function ProjectFiltersSelect({
 
 const CAROUSEL_SLIDES_GAP = 24;
 
-function ProjectCarousel({ projects }: { projects: Project[] }) {
+function ProjectCarousel({ projects }: { projects: any }) {
   const carouselWrapperRef = useRef<ElementRef<'div'>>(null);
   const carouselRef = useRef<ElementRef<'ul'>>(null);
   const [carouselWidth, setCarouselWidth] = useState(0);
@@ -330,7 +327,7 @@ function ProjectCarousel({ projects }: { projects: Project[] }) {
     [dragStart, isDragging],
   );
 
-  const filteredProjects = (projects || []).filter((project) => {
+  const filteredProjects = (projects || []).filter((project: any) => {
     const isAnyProjectTagFiltered = selectedFilters.some((selectedFilter) =>
       project.tags?.includes(selectedFilter),
     );
@@ -339,7 +336,7 @@ function ProjectCarousel({ projects }: { projects: Project[] }) {
 
     const isWildcardFilterEnabledAndNoProjectTagFiltered =
       selectedFilters.includes(wildcardFilter) &&
-      !project.tags?.some((projectTag) => projectTagFilters.includes(projectTag));
+      !project.tags?.some((projectTag: any) => projectTagFilters.includes(projectTag));
 
     return isWildcardFilterEnabledAndNoProjectTagFiltered;
   });
@@ -398,7 +395,7 @@ function ProjectCarousel({ projects }: { projects: Project[] }) {
               isDragging && 'cursor-grabbing',
             )}
           >
-            {projects?.map((project, index) => (
+            {projects?.map((project: any, index: any) => (
               <ProjectSlide
                 key={project._id}
                 project={project}

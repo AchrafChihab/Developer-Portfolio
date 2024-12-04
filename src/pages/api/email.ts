@@ -1,13 +1,13 @@
-import { siteConfig } from '@/config/site';
-import { ContactSubmissionConfirmationEmail } from '@/emails/contact-submission-confirmation';
+import { siteConfig } from '@/config/site.js';
 import { resend } from '@/lib/resend';
-import { contactSubmissionSchema } from '@/lib/validations/contact-submission';
 import { type APIRoute } from 'astro';
+import { ContactSubmissionConfirmationEmail } from '@/emails/contact-submission-confirmation.js';
+import { contactSubmissionSchema } from '@/lib/validations/contact-submission.js';
 
 export const prerender = false;
 
 const SENDER_EMAIL = siteConfig.email;
-const NOREPLY_EMAIL = 'noreply@lokkeestudios.com';
+const NOREPLY_EMAIL = 'noreply@ashrafchihab.com';
 
 const POST: APIRoute = async ({ request }) => {
   const data = await request.json();
@@ -47,7 +47,7 @@ const POST: APIRoute = async ({ request }) => {
       );
     })
     .catch(
-      (error) =>
+      (error: any) =>
         new Response(JSON.stringify(error), {
           status: 500,
         }),

@@ -1,5 +1,5 @@
-import { type Image } from '@/lib/strapi/sanity-image';
-import groq from 'groq';
+// import { type Image } from '@/lib/strapi/sanity-image';
+// import groq from 'groq';
 
 export type Project = {
   src: string | undefined;
@@ -22,17 +22,31 @@ export type Project = {
   description: string;
 };
 
+// _id: string;
+// _type: 'project';
+// _createdAt: string;
+// _updatedAt: string;
+// _rev: string;
+// name: string;
+// slug: { _type: 'slug'; current: string };
+// date: string;
+// description: string;
+// poster: Image;
+// images: Image[];
+// tags?: string[];
+// githuburl?: string;
+// projecturl?: string;
+
 // Adapter le retour de `getProjects` pour correspondre à ce type
-export async function getProjects(): Promise<{
-  [x: string]: any;
-  data: any;
-}> {
+export async function getProjects() {
   return {
     data: [
       {
         _id: 1,
         slug: { current: 'lalla-essaouira' },
         name: 'Lalla Essaouira',
+        projecturl: 'https://lallaessaouira.com',
+        images: [{ alt: '/lallaessaouira.png' }],
         src: '/lallaessaouira.png', // Add the image path here
         poster: {
           alt: 'lalla-essaouira',
@@ -55,6 +69,8 @@ export async function getProjects(): Promise<{
         slug: { current: 'pan-maroc' },
         name: 'Pan Maroc',
         src: '/panmaroc.png', // Add another image path
+        projecturl: 'https://lallaessaouira.com',
+        images: [{ alt: '/lallaessaouira.png' }],
         poster: {
           alt: 'Pan Maroc',
           asset: {
@@ -77,6 +93,8 @@ export async function getProjects(): Promise<{
         slug: { current: 'cooper-pharma' },
         name: 'Cooper Pharma',
         src: '/cooperpharma.png', // Add another image path
+        projecturl: 'https://lallaessaouira.com',
+        images: [{ alt: '/lallaessaouira.png' }],
         poster: {
           alt: 'Cooper Pharma',
           asset: {
@@ -99,6 +117,8 @@ export async function getProjects(): Promise<{
         slug: { current: 'passesimplelogo.png' },
         name: 'Passe Simple Avocat',
         src: '/passesimplelogo.png', // Add another image path
+        projecturl: 'https://lallaessaouira.com',
+        images: [{ alt: '/lallaessaouira.png' }],
         poster: {
           alt: 'Passe Simple Avocat',
           asset: {
@@ -121,6 +141,8 @@ export async function getProjects(): Promise<{
         slug: { current: 'excelsa' },
         name: 'Excelsa',
         src: '/excelsa.png', // Add another image path
+        projecturl: 'https://lallaessaouira.com',
+        images: [{ alt: '/lallaessaouira.png' }],
         poster: {
           alt: 'Excelsa',
           asset: {
@@ -143,6 +165,8 @@ export async function getProjects(): Promise<{
         slug: { current: 'prevas' },
         name: 'Prevas',
         src: '/prevas.svg', // Add another image path
+        projecturl: 'https://lallaessaouira.com',
+        images: [{ alt: '/lallaessaouira.png' }],
         poster: {
           alt: 'Prevas',
           asset: {
@@ -165,6 +189,8 @@ export async function getProjects(): Promise<{
         slug: { current: 'lematelas' },
         name: 'Lematelas.com',
         src: '/lematlas.png', // Add another image path
+        projecturl: 'https://lallaessaouira.com',
+        images: [{ alt: '/lallaessaouira.png' }],
         poster: {
           alt: 'Lematelas.com',
           asset: {

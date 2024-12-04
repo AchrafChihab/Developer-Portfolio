@@ -12,7 +12,7 @@ import { getTestimonials } from '@/lib/strapi/get-testimonials';
 //   author: string;
 // }
 
-const testimonials: any = await getTestimonials();
+const testimonials: any = getTestimonials();
 try {
   console.log('Fetched testimonials:', testimonials);
 } catch (error) {
